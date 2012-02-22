@@ -1,20 +1,16 @@
 java_import com.yahoo.platform.yui.compressor.JavaScriptCompressor
-
-require 'error'
+java_import java.io.FileReader
 
 module JMinify
 
   class JS
-
     def initialize(path)
-      reader = java.io.FileReader.new(path)
-      @compressor = JavaScriptCompressor.new(reader, Error.new)
+      @reader = FileReader.new(path)
+      @compressor = JavaScriptCompressor.new(@reader, Error.new)
     end
 
     def compress(out)
-      writer = java.io.FileWriter.new(out)
-      @compressor.compress(writer, -1, true, false, true, false)
-      writer.close
+      @compressor.compress(out, -1, true, false, true, false)
     end
   end
 
