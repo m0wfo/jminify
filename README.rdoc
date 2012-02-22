@@ -1,0 +1,3 @@
+= jminify
+
+Because I couldn't find a decent JavaScript/CSS minifier for JRuby.
